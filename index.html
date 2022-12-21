@@ -1,0 +1,102 @@
+<html>
+
+  <head>
+
+    <title>Equation Solver</title>
+
+  </head>
+
+  <body>
+
+    <h1>Equation Solver</h1>
+
+    <p>Enter the coefficients of your equation below to find the roots:</p>
+
+    <form>
+
+      <label for="type">Type of equation:</label>
+
+      <select id="type">
+
+        <option value="quadratic">Quadratic</option>
+
+        <option value="linear">Linear</option>
+
+      </select>
+
+      <br>
+
+      <label for="a">a:</label>
+
+      <input type="text" id="a" name="a">
+
+      <br>
+
+      <label for="b">b:</label>
+
+      <input type="text" id="b" name="b">
+
+      <br>
+
+      <label for="c">c:</label>
+
+      <input type="text" id="c" name="c">
+
+      <br><br>
+
+      <input type="submit" value="Solve">
+
+    </form>
+
+    <div id="result">
+
+      <!-- The result of the equation will be displayed here -->
+
+    </div>
+
+    <script>
+
+      const form = document.querySelector('form');
+
+      const result = document.querySelector('#result');
+
+      form.addEventListener('submit', (event) => {
+
+        event.preventDefault();  // prevent the form from submitting
+
+        const type = document.querySelector('#type').value;
+
+        const a = parseFloat(document.querySelector('#a').value);
+
+        const b = parseFloat(document.querySelector('#b').value);
+
+        const c = parseFloat(document.querySelector('#c').value);
+
+        if (type === 'quadratic') {
+
+          // use the quadratic formula to calculate the roots
+
+          const root1 = (-b + Math.sqrt(b**2 - 4*a*c)) / (2*a);
+
+          const root2 = (-b - Math.sqrt(b**2 - 4*a*c)) / (2*a);
+
+          result.innerHTML = `The roots are ${root1} and ${root2}.`;
+
+        } else if (type === 'linear') {
+
+          // use the formula for linear equations to calculate the root
+
+          const root = -b / a;
+
+          result.innerHTML = `The root is ${root}.`;
+
+        }
+
+      });
+
+    </script>
+
+  </body>
+
+</html>
+
